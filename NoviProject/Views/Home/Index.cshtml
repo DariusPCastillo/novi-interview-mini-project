@@ -1,0 +1,61 @@
+﻿
+@model List<Member>
+@{
+    ViewData["Title"] = "Index"; 
+}
+
+<link rel="~/tablesort/css/theme.default.css" />
+<script type="text/javascript" src="~/js/jquery.js"> </script>
+<script src="~/js/Sort.js"></script>
+
+
+<div>
+    <h2 class="display-4">Members List</h2>
+    <center>
+        <form asp-controller="Home" asp-action="Index" method="get" style="position:relative; right:33%;">
+    <div class="form-actions no-color">
+        <p>
+                    Search: <input type="text" name="searchString" placeholder="Name or CustomerType" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Submit" class="btn btn-default" style="background-color:lightcyan!important; border:1px solid!important; padding-bottom: 2px; padding-top:2px; position:relative; bottom:2px;"/> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+        </form>
+    </center>
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-bordered table-striped table-sm sortable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Customer Type</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Member Status</th>
+                    <th>Member Since</th>
+                    <th>QuickBooksID</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+ 
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CustomerType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>             
+                        <td>@Html.DisplayFor(modelItem => item.MemberStatus)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MemberSince)</td>
+                        <td>@Html.DisplayFor(modelItem => item.QuickBooksID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Active)</td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
+<script src="~/js/manipulate.js"></script>
