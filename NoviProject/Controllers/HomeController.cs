@@ -16,7 +16,7 @@ namespace NoviProject.Controllers
             _noviAMSApiService = noviAMSApiService;
         }
 
-        public async Task<IActionResult> Index(string? sortOrder, string? searchString)
+        public async Task<IActionResult> Index(string? searchString)
         {
 
             ViewData["CurrentFilter"] = searchString;
