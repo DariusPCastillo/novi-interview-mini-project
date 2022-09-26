@@ -4,7 +4,6 @@ using System.Diagnostics;
 using NoviProject.Services;
 using System.Runtime.CompilerServices;
 using System.Linq.Expressions;
-
 namespace NoviProject.Controllers
 {
     public class HomeController : Controller
@@ -18,7 +17,7 @@ namespace NoviProject.Controllers
 
         public async Task<IActionResult> Index(string? searchString)
         {
-
+       
             ViewData["CurrentFilter"] = searchString;
 
             List<Member> members = new List<Member>();
@@ -40,6 +39,12 @@ namespace NoviProject.Controllers
 
             return View(students.ToList());
         }
+        public async Task<IActionResult> ViewProfile(string? id)
+        {
+            SingleMember members = new SingleMember();
+            members = await _noviAMSApiService.GetSingleMember(id);
 
+            return View(members);
+        }
     }
 }

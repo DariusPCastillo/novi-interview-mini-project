@@ -4,58 +4,84 @@
     ViewData["Title"] = "Index"; 
 }
 
-<link rel="~/tablesort/css/theme.default.css" />
-<script type="text/javascript" src="~/js/jquery.js"> </script>
-<script src="~/js/Sort.js"></script>
 
+<script type="text/javascript" src="~/js/jquery.js"> </script>
+<link href="~/css/bootstrap.other.css" rel="stylesheet">
+<script src="~/js/bootstrap.bundle.min.js"></script>
+<link href="~/css/index.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 <div>
-    <h2 class="display-4">Members List</h2>
-    <center>
-        <form asp-controller="Home" asp-action="Index" method="get" style="position:relative; right:33%;">
-    <div class="form-actions no-color">
-        <p>
-                    Search: <input type="text" name="searchString" placeholder="Name or CustomerType" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Submit" class="btn btn-default" style="background-color:lightcyan!important; border:1px solid!important; padding-bottom: 2px; padding-top:2px; position:relative; bottom:2px;"/> |
-            <a asp-action="Index">Back to Full List</a>
-        </p>
-    </div>
-        </form>
-    </center>
-    @if (Model != null && Model.Count > 0)
-    {
-        <table class="table table-bordered table-striped table-sm sortable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Customer Type</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Member Status</th>
-                    <th>Member Since</th>
-                    <th>QuickBooksID</th>
-                    <th>Active</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
- 
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.CustomerType)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>             
-                        <td>@Html.DisplayFor(modelItem => item.MemberStatus)</td>
-                        <td>@Html.DisplayFor(modelItem => item.MemberSince)</td>
-                        <td>@Html.DisplayFor(modelItem => item.QuickBooksID)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Active)</td>
-                       
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-
+<center>
+ <form asp-controller="Home" asp-action="Index" method="get" style="position:relative; top: 50px; left:388px;">
+			<div class="input-box">
+			<input type="text" class="form-control" name="searchString" placeholder="Name or CustomerType" value="@ViewData["CurrentFilter"]">
+			<i class="fa fa-search"></i>
+			</div>
+ </form>
+ </center>
+ </div>
+<body>
+<div class="container p-0">
+	<h1 class="h3 mb-3">Members</h1>
+	<div class="row">
+		
+			@foreach (var item in Model)
+				{
+				string? StatusName = item.MemberStatus;
+				string? CustomerType = "";
+				string? src = ""; string? alt = "";
+				//Memberstatus bootstrap
+				if (item.MemberStatus != null && item.MemberStatus.Contains("non_member"))
+				{
+					StatusName = "Guest";
+				}
+				if (item.MemberStatus != null && item.MemberStatus.Contains("expired")){
+					StatusName = "Expired";
+				}
+				//customer type boostrap
+				if (item.CustomerType != null && item.CustomerType.Equals("Person"))
+				{
+					CustomerType = "bg-success";
+					src = "/images/kid-1837375_640.png";
+					alt = "/images/kid-1837375_640.png";
+				}
+				if (item.CustomerType != null && item.CustomerType.Equals("Company"))
+				{
+					CustomerType = "bg-warning";
+					src = "/images/organization-avatar.png";
+					alt = "/images/organization-avatar.png";
+				}
+				<div class="col-12 col-md-6 col-lg-3">
+<div class="card">		
+	<div class="card-header px-4 pt-4">
+		<div class="card-actions float-right">
+			<div class="dropdown show">
+					<a href="#" data-toggle="dropdown" data-display="static">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+						</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								@Html.ActionLink("View Profile","ViewProfile", "Home", new {id = item.UniqueID}, new {@class="dropdown-item"})
+								</div>
+								</div>
+							</div>
+							<img src="@src" class="rounded-circle mr-1" alt="@alt" width="28" height="28">
+							<h5 class="card-title mb-0">@Html.DisplayFor(modelItem => item.Name)</h5>
+							<div class="badge @CustomerType my-2">@Html.DisplayFor(modelItem => item.CustomerType)</div>
+						</div>
+						<div class="card-body px-4 pt-2">
+							
+							<p>@Html.LabelFor(modelItem => item.Phone) : @Html.DisplayFor(modelItem => item.Phone)</p>
+							<p>@Html.LabelFor(modelItem => item.AutoRenew) : @Html.DisplayFor(modelItem => item.AutoRenew)</p>
+							<p>@Html.LabelFor(modelItem => item.MemberStatus) : @StatusName</p>
+							<p>@Html.LabelFor(modelItem => item.MemberSince) : @Html.DisplayFor(modelItem => item.MemberSince)</p>
+			</div>
+					
+	</div>
+					
 </div>
-<script src="~/js/manipulate.js"></script>
+}
+</div>				
+</div>				
+</body>
+

@@ -1,33 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\IeeTeY\\Documents\\NoviProject\\NoviProject\\NoviProject.csproj": {}
+    "C:\\Users\\darius.castillo\\Downloads\\NoviProject-Darius\\NoviProject\\NoviProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\IeeTeY\\Documents\\NoviProject\\NoviProject\\NoviProject.csproj": {
+    "C:\\Users\\darius.castillo\\Downloads\\NoviProject-Darius\\NoviProject\\NoviProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\IeeTeY\\Documents\\NoviProject\\NoviProject\\NoviProject.csproj",
+        "projectUniqueName": "C:\\Users\\darius.castillo\\Downloads\\NoviProject-Darius\\NoviProject\\NoviProject.csproj",
         "projectName": "NoviProject",
-        "projectPath": "C:\\Users\\IeeTeY\\Documents\\NoviProject\\NoviProject\\NoviProject.csproj",
-        "packagesPath": "C:\\Users\\IeeTeY\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\IeeTeY\\Documents\\NoviProject\\NoviProject\\obj\\",
+        "projectPath": "C:\\Users\\darius.castillo\\Downloads\\NoviProject-Darius\\NoviProject\\NoviProject.csproj",
+        "packagesPath": "C:\\Users\\darius.castillo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\darius.castillo\\Downloads\\NoviProject-Darius\\NoviProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\IeeTeY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\darius.castillo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,6 +67,14 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.9, )"
             },

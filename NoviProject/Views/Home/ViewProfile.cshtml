@@ -1,0 +1,253 @@
+﻿@model SingleMember
+
+@{
+    ViewData["Title"] = "ViewProfile";
+}
+<script type="text/javascript" src="~/js/jquery.js"> </script>
+<link href="~/css/boostrap.half.css" rel="stylesheet" />
+<script src="~/js/bootstrap.min.js"></script>
+<link href="~/css/bootstrap.other.css" rel="stylesheet" />
+<link href="~/css/custom.css" rel="stylesheet" />
+<script src="~/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+<body>
+    @Html.ActionLink("< Back","Index", "Home", new{}, new {@class="previous"})
+<div class="container">
+<div class="row">
+      <div class="col-xs-12 col-sm-9">
+        <!-- User profile -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User Profile</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__avatar">
+                @{
+                 //CustomerType
+				string? customerType = Model.CustomerType;
+				string? src = ""; string? alt = "";
+				if (customerType != null && customerType.Equals("Company"))
+				{
+					src = "/images/organization-avatar.png";
+					alt = "/images/organization-avatar.png";
+				}
+				if (customerType != null && customerType.Equals("Person"))
+				{
+					src = "/images/kid-1837375_640.png";
+					alt = "/images/kid-1837375_640.png";
+				}
+                }
+              <img src="@src" alt="@alt" width="40" height="40">
+            </div>
+            <div class="profile__header">
+              <h4>@Html.DisplayFor(model => model.Name)</h4>
+                     
+              <p class="text-muted">
+                @Html.DisplayFor(model => model.CustomerType)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- User info -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User Info</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Name:</strong></th>
+                  <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+                  <tr>
+                  <th><strong>Email:</strong></th>
+                  <td> @Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                               
+                <tr>
+                  <th><strong>Personal Email:</strong></th>
+                  <td>@Html.DisplayFor(model => model.PersonalEmail)</td>
+                </tr>
+                 <tr>
+                    <th><strong>Personal Phone:</strong></th>
+                     <td>@Html.DisplayFor(model => model.PersonalPhone)</td>
+                     </tr>
+                 <tr>
+                    <th><strong>Website:</strong></th>
+                     <td>@Html.DisplayFor(model => model.Website)</td>
+                     </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+                @{
+                    string? StatusName ="";
+                    bool? active = Model.Active;
+                    string? newActive = "";
+                    if (active == true)
+                    {
+                        newActive = active.ToString();
+                    }
+                    if (Model.MemberStatus!= null && Model.MemberStatus.Contains("non_member"))
+                    {
+                        StatusName = "Guest";
+                    }
+                    if (Model.MemberStatus != null && Model.MemberStatus.Contains("expired"))
+                    {
+                        StatusName = "Expired";
+                    }
+                }
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Status</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Active:</strong></th>
+                 <td>@Html.DisplayFor(model => @newActive)</td>
+                </tr>
+                  <tr>
+                  <th><strong>Member Status:</strong></th>
+                  <td>@Html.DisplayFor(model => @StatusName)</td>
+                </tr>
+                  <tr>
+                  <th><strong>Member Since:</strong></th>
+                  <td>@Html.DisplayFor(model => model.MemberSince)</td>
+                </tr>
+                  <tr>
+                  <th><strong>Membership Expires:</strong></th>
+                  <td>@Html.DisplayFor(model => model.MembershipExpires)</td>
+                </tr>
+                  <tr>
+                  <th><strong>Auto Renew:</strong></th>
+                  <td>@Html.DisplayFor(model => model.AutoRenew)</td>
+                </tr>
+                  <tr>
+                  <th><strong>Unsubscribe From Emails:</strong></th>
+                  <td>@Html.DisplayFor(model => model.UnsubscribeFromEmails)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Billing Address:</h4>
+          </div>
+          <div class="panel-body">
+                        <table class="table profile__table">
+                            <tbody>
+                                <tr>
+                         <th><strong>Address 1:</strong></th>
+                             <td>@Html.DisplayFor(model => model.BillingAddress.Address1)</td>
+                              </tr>
+                                <tr>
+                                    <th><strong>Address 2:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.BillingAddress.Address2)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>City:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.BillingAddress.City)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Zip Code:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.BillingAddress.ZipCode)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>State Province:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.BillingAddress.StateProvince)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Country:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.BillingAddress.Country)</td>
+                                </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Shipping Address:</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <tbody>
+                                <tr>
+                                    <th><strong>Address 1:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.ShippingAddress.Address1)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Address 2:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.ShippingAddress.Address2)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>City:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.ShippingAddress.City)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Zip Code:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.ShippingAddress.ZipCode)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>State Province:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.ShippingAddress.StateProvince)</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Country:</strong></th>
+                                    <td>@Html.DisplayFor(model => model.ShippingAddress.Country)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+ </div>
+      <div class="col-xs-12 col-sm-3">
+        
+        <!-- Contact user -->
+        <p>
+         <a href="mailto:@Html.DisplayFor(model => model.Email)" style="font-size:16px!important;" class="profile__contact-btn btn btn-lg btn-block btn-info">
+            Contact User
+          </a>
+        </p>
+        <hr class="profile__contact-hr">
+        <!-- Contact info -->
+        <div class="profile__contact-info">
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Work Number:</h5>
+            @Html.DisplayFor(model => model.Phone)
+            </div>
+          </div>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Mobile Number:</h5>
+              @Html.DisplayFor(model => model.PersonalMobile)
+            </div>
+          </div>
+             <div class="profile__contact-info-item">
+            <div class="profile__contact-info-body">
+                            <a href="@Html.DisplayFor(model => model.FacebookUrl)" class="fa fa-facebook"></a>
+                            <a href="@Html.DisplayFor(model => model.TwitterHandle)" class="fa fa-twitter"></a>
+                            <a href="@Html.DisplayFor(model => model.LinkedInUrl)" class="fa fa-linkedin"></a>
+                            <a href="#" class="fa fa-instagram"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+
