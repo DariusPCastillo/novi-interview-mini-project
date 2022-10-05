@@ -1,61 +1,90 @@
-﻿
-@model List<Member>
+﻿@model List<Member>
 @{
-    ViewData["Title"] = "Index"; 
+    ViewData["Title"] = "Index";
 }
-
-<link rel="~/tablesort/css/theme.default.css" />
-<script type="text/javascript" src="~/js/jquery.js"> </script>
-<script src="~/js/Sort.js"></script>
-
-
-<div>
-    <h2 class="display-4">Members List</h2>
-    <center>
-        <form asp-controller="Home" asp-action="Index" method="get" style="position:relative; right:33%;">
-    <div class="form-actions no-color">
-        <p>
-                    Search: <input type="text" name="searchString" placeholder="Name or CustomerType" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Submit" class="btn btn-default" style="background-color:lightcyan!important; border:1px solid!important; padding-bottom: 2px; padding-top:2px; position:relative; bottom:2px;"/> |
-            <a asp-action="Index">Back to Full List</a>
-        </p>
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/eduvibe-font.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/magnifypopup.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/odometer.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/lightbox.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/animation.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/jqueru-ui-min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="slider-area banner-style-3 bg-image">
+            <div class="d-flex align-items-center height-940">
+                <div class="container eduvibe-animated-shape">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="inner">
+                                <div class="content text-start">
+                                    <span class="pre-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">NOVI AMS API</span>
+                                    <h1 class="title" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">This is a Test to Populate NoviAMS Members</h1>
+                                    <p class="description" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800">View users, company profiles, status, and contact </p>
+                                    <a class="edu-btn" href="@Url.Action( "Members", "Home")" data-sal-delay="450" data-sal="slide-up" data-sal-duration="800">View Members <i class="icon-arrow-right-line-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="banner-image">
+                                <div class="banner-main-image">
+                                    <img class="img-01" data-sal-delay="150" data-sal="fade" data-sal-duration="800" src="~/assets/images/banner/banner-03/image-01.png" style="position:relative!important; right:10%!important;" alt="Banner Images" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shape-wrapper">
+                        <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                            <div class="shape-image shape-image-1">
+                                <img src="~/assets/images/shapes/shape-11-03.png" alt="Shape Thumb" />
+                            </div>
+                            <div class="shape-image shape-image-2">
+                                <img src="~/assets/images/shapes/shape-01-02.png" alt="Shape Thumb" />
+                            </div>
+                            <div class="shape-image shape-image-3">
+                                <img src="~/assets/images/shapes/shape-13-06-07.png" alt="Shap
+                                e Thumb" />
+                            </div>
+                            <div class="shape-image shape-image-4">
+                                <img src="~/assets/images/shapes/shape-26.png" alt="Shape Thumb" />
+                            </div>
+                            <div class="shape-image shape-image-5">
+                                <img src="~/assets/images/shapes/shape-05-01.png" alt="Shape Thumb" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-        </form>
-    </center>
-    @if (Model != null && Model.Count > 0)
-    {
-        <table class="table table-bordered table-striped table-sm sortable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Customer Type</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Member Status</th>
-                    <th>Member Since</th>
-                    <th>QuickBooksID</th>
-                    <th>Active</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
- 
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.CustomerType)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>             
-                        <td>@Html.DisplayFor(modelItem => item.MemberStatus)</td>
-                        <td>@Html.DisplayFor(modelItem => item.MemberSince)</td>
-                        <td>@Html.DisplayFor(modelItem => item.QuickBooksID)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Active)</td>
-                       
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
+    <div class="rn-progress-parent">
+        <svg class="rn-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
 
-</div>
-<script src="~/js/manipulate.js"></script>
+    <style>
+        .edu-header.header-sticky {
+            position:relative!important;
+        }
+        .banner-style-3 {
+            background-image: none!important;
+        }
+    </style>
+</body>
+</html>

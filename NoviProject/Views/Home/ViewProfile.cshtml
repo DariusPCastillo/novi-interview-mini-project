@@ -1,0 +1,328 @@
+﻿@model SingleMember
+
+@{
+    ViewData["Title"] = "ViewProfile";
+}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/eduvibe-font.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/magnifypopup.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/odometer.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/lightbox.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/animation.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/jqueru-ui-min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="edu-breadcrumb-area breadcrumb-style-1 ptb--60 ptb_md--40 ptb_sm--40 bg-image">
+            <div class="container eduvibe-animated-shape">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-inner text-start">
+                            <div class="page-title">
+                                <h3 class="title">View Profile</h3>
+                            </div>
+                            <nav class="edu-breadcrumb-nav">
+                                <ol class="edu-breadcrumb d-flex justify-content-start liststyle">
+                                    <li class="breadcrumb-item"><a href="@Url.Action( "Members", "Home")">Members</a></li>
+                                    <li class="separator"><i class="ri-arrow-drop-right-line"></i></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                    <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                        <div class="shape-image shape-image-1">
+                            <img src="~/assets/images/shapes/shape-11-07.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-2">
+                            <img src="~/assets/images/shapes/shape-01-02.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-3">
+                            <img src="~/assets/images/shapes/shape-03.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-4">
+                            <img src="~/assets/images/shapes/shape-13-12.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-5">
+                            <img src="~/assets/images/shapes/shape-36.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-6">
+                            <img src="~/assets/images/shapes/shape-05-07.png" alt="Shape Thumb" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="edu-course-details-area edu-section-gap bg-color-white">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-12">
+                        <div class="main-image thumbnail">
+                            <img class="radius-small" src="~/assets/images/course/course-details/course-02.jpg" alt="Banner Images">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="course-details-content">
+                            <div class="content-top">
+                                <div class="author-meta">
+                                    <div class="author-thumb">
+                                            <span class="author-title">@Html.DisplayFor(model => model.CustomerType)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="title">@Html.DisplayFor(model => model.Name)</h3>
+
+                            <ul class="edu-course-tab nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Info</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button" role="tab" aria-controls="curriculum" aria-selected="false">Status</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" type="button" role="tab" aria-controls="instructor" aria-selected="false">Billing Address:</button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Shipping Address:</button>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                    <div class="course-tab-content">
+                                        <h4 class="panel-title">Info:</h4>
+                                        <table class="zigzag">
+                                            <thead>
+                                                <tr>
+                                                    <th class="header"><strong>Name:</strong></th>
+                                                    <th class="header"><strong>Email:</strong></th>
+                                                    <th class="header"><strong>Personal Email:</strong></th>
+                                                    <th class="header"><strong>Personal Phone:</strong></th>
+                                                    <th class="header"><strong>Website:</strong></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    
+                                                    <td>@Html.DisplayFor(model => model.Name)</td>
+                                                    <td> @Html.DisplayFor(model => model.Email)</td>
+                                                    <td>@Html.DisplayFor(model => model.PersonalEmail)</td>
+                                                    <td>@Html.DisplayFor(model => model.PersonalPhone)</td>
+                                                    <td>@Html.DisplayFor(model => model.Website)</td>
+                                                </tr>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                @{
+                                    string? StatusName = "";
+                                    bool? active = Model.Active;
+                                    string? newActive = "";
+                                    if (active == true)
+                                    {
+                                        newActive = active.ToString();
+                                    }
+                                    if (Model.MemberStatus != null && Model.MemberStatus.Contains("non_member"))
+                                    {
+                                        StatusName = "Guest";
+                                    }
+                                    if (Model.MemberStatus != null && Model.MemberStatus.Contains("expired"))
+                                    {
+                                        StatusName = "Expired";
+                                    }
+                                }
+                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+                                    <div class="course-tab-content">
+                                        <h4 class="panel-title">Status:</h4>
+                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
+                                                    <div class="edu-accordion-body">
+                                                        <table class="zigzag">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="header"><strong>Active:</strong></th>
+                                                                    <th class="header"><strong>Member Status:</strong></th>
+                                                                    <th class="header"><strong>Member Since:</strong></th>
+                                                                    <th class="header"><strong>Membership Expires:</strong></th>
+                                                                    <th class="header"><strong>Auto Renew:</strong></th>
+                                                                    <th class="header"><strong>Unsubscribe From Emails:</strong></th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                  <td>@Html.DisplayFor(model => @newActive)</td>
+                                                                  <td>@Html.DisplayFor(model => @StatusName)</td>
+                                                                  <td>@Html.DisplayFor(model => model.MemberSince)</td>
+                                                                  <td>@Html.DisplayFor(model => model.MembershipExpires)</td>
+                                                                  <td>@Html.DisplayFor(model => model.AutoRenew)</td>
+                                                                  <td>@Html.DisplayFor(model => model.UnsubscribeFromEmails)</td>
+                                                                </tr>
+                                                       </tbody>
+                                                </table>
+                                               </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                    <div class="course-tab-content">
+                                        <div class="course-author-wrapper">
+                                            <div class="author-content">
+                                                <h4 class="panel-title">Billing Address:</h4>
+                                                <table class="zigzag">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="header"><strong>Address 1:</strong></th>
+                                                            <th class="header"><strong>Address 2:</strong></th>
+                                                            <th class="header"><strong>City:</strong></th>
+                                                            <th class="header"><strong>Zip Code:</strong></th>
+                                                            <th class="header"><strong>State Province:</strong></th>
+                                                            <th class="header"><strong>Country:</strong></th>
+                                                        </tr>
+                                                        </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(model => model.BillingAddress.Address1)</td>
+                                                            <td>@Html.DisplayFor(model => model.BillingAddress.Address2)</td>
+                                                            <td>@Html.DisplayFor(model => model.BillingAddress.City)</td>
+                                                            <td>@Html.DisplayFor(model => model.BillingAddress.ZipCode)</td>
+                                                            <td>@Html.DisplayFor(model => model.BillingAddress.StateProvince)</td>
+                                                            <td>@Html.DisplayFor(model => model.BillingAddress.Country)</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                    <div class="course-tab-content">
+                                        <h4 class="panel-title">Shipping Address:</h4>
+                                        <table class="zigzag">
+                                            <thead>
+                                                <tr>
+                                                    <th class="header"><strong>Address 1:</strong></th>
+                                                    <th class="header"><strong>Address 2:</strong></th>
+                                                    <th class="header"><strong>City:</strong></th>
+                                                    <th class="header"><strong>Zip Code:</strong></th>
+                                                    <th class="header"><strong>State Province:</strong></th>
+                                                    <th class="header"><strong>Country:</strong></th>
+                                                 </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                <tr>
+                                                    <td>@Html.DisplayFor(model => model.ShippingAddress.Address1)</td>
+                                                    <td>@Html.DisplayFor(model => model.ShippingAddress.Address2)</td>
+                                                    <td>@Html.DisplayFor(model => model.ShippingAddress.City)</td>
+                                                    <td>@Html.DisplayFor(model => model.ShippingAddress.ZipCode)</td>
+                                                    <td>@Html.DisplayFor(model => model.ShippingAddress.StateProvince)</td>
+                                                    <td>@Html.DisplayFor(model => model.ShippingAddress.Country)</td>
+                                               </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="eduvibe-sidebar course-details-sidebar">
+                            <div class="inner">
+                                <div class="eduvibe-widget">
+                                    <div class="eduvibe-widget-details mt--35">
+                                        <div class="widget-content">
+                                            <ul>
+                                                <li><span><i class="icon-time-line"></i> Work Number:</span><span>@Html.DisplayFor(model => model.Phone)</span></li>
+                                                <li><span><i class="icon-user-2"></i> Mobile Number:</span><span>@Html.DisplayFor(model => model.PersonalMobile)</span></li>
+                                            </ul>
+                                            <div class="read-more-btn mt--30 text-center">
+                                                <div class="eduvibe-post-share">
+                                                    <span>Contact: </span>
+                                                    <a class="linkedin" href="@Html.DisplayFor(model => model.LinkedInUrl)"><i class="icon-linkedin"></i></a>
+                                                    <a class="facebook" href="@Html.DisplayFor(model => model.FacebookUrl)"><i class="icon-Fb"></i></a>
+                                                    <a class="twitter" href="@Html.DisplayFor(model => model.TwitterHandle)"><i class="icon-Twitter"></i></a>
+                                                    <a class="youtube" href="#"><i class="icon-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rn-progress-parent">
+        <svg class="rn-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+</body>
+<style>
+.edu-course-details-area .main-image img{
+    height: 470px!important;
+}
+
+    table {
+        font-family: sans-serif;
+    }
+
+        table th,
+        table td {
+            padding: 0.25em 0.5em;
+            text-align: left;
+        }
+
+            table th:nth-child(2),
+            table td:nth-child(2) {
+                text-align: right;
+            }
+
+        table td {
+            background-color: #eee;
+        }
+
+        table th {
+            background-color: #009;
+            color: #fff;
+        }
+
+    .zigzag {
+        border-collapse: separate;
+        border-spacing: 0.25em 1em;
+    }
+
+        .zigzag tbody tr:nth-child(odd) {
+            transform: rotate(2deg);
+        }
+
+        .zigzag thead tr,
+        .zigzag tbody tr:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+</style>
+
+</html>

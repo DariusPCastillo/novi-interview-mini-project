@@ -4,7 +4,6 @@ using System.Diagnostics;
 using NoviProject.Services;
 using System.Runtime.CompilerServices;
 using System.Linq.Expressions;
-
 namespace NoviProject.Controllers
 {
     public class HomeController : Controller
@@ -16,18 +15,28 @@ namespace NoviProject.Controllers
             _noviAMSApiService = noviAMSApiService;
         }
 
-        public async Task<IActionResult> Index(string? sortOrder, string? searchString)
+        public async Task<IActionResult> Index()
         {
+          return View();
+        }
+        public async Task<IActionResult> ViewProfile(string? id)
+        {
+            SingleMember members = new SingleMember();
+            members = await _noviAMSApiService.GetSingleMember(id);
 
+            return View(members);
+        }
+        public async Task<IActionResult> Members(string? searchString)
+        {
             ViewData["CurrentFilter"] = searchString;
 
             List<Member> members = new List<Member>();
             members = await _noviAMSApiService.GetMembers();
-            
+
             var students = from s in members
                            select s;
-            students = students.Where(s => s.Active.Value == true 
-                                            && s.CustomerType.Equals("Company") 
+            students = students.Where(s => s.Active.Value == true
+                                            && s.CustomerType.Equals("Company")
                                             || s.CustomerType.Equals("Person"));
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -40,6 +49,5 @@ namespace NoviProject.Controllers
 
             return View(students.ToList());
         }
-
     }
 }

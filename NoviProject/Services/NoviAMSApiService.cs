@@ -45,5 +45,30 @@ namespace NoviProject.Services
 
             return result;
         }
+
+        public async Task<SingleMember> GetSingleMember(string? id)
+        {
+           
+            var url = string.Format("/api/customers/{0}",id);
+            var result = new SingleMember();
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+
+               result = JsonSerializer.Deserialize<SingleMember>(stringResponse);
+
+            }
+            else
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+            return result;
+        }
+
+        public Task<SingleMember> GetSingleMember()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
